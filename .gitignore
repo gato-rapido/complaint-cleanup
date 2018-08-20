@@ -1,0 +1,3 @@
+.ipynb_checkpoints
+work/data/*
+!work/data/zip_borough.csv
