@@ -74,7 +74,7 @@ resource "aws_instance" "web" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "${var.instance_type}"
   root_block_device {
-    volume_size = 18
+    volume_size = 40
   }
 
   security_groups = ["${aws_security_group.allow_ssh_jupyter.name}"]
@@ -105,6 +105,9 @@ chmod +x /usr/local/bin/docker-compose
 
 # Clone repo
 git clone https://github.com/gato-rapido/complaint-cleanup /home/ubuntu/complaint-cleanup
+
+# Fix permissions to allow downloading datasets
+chmod -R 777 /home/ubuntu/complaint-cleanup
 
 # Run docker-compose
 docker-compose -f /home/ubuntu/complaint-cleanup/docker-compose.yml up -d
