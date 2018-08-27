@@ -22,8 +22,8 @@ resource "aws_key_pair" "user_key_pair" {
   public_key = "${var.public_key}"
 }
 
-resource "aws_security_group" "allow_ssh_jn" {
-  name        = "allowsshjn"
+resource "aws_security_group" "allow_ssh_jupyter" {
+  name        = "allowsshjupyter"
   description = "Allow ssh, jupyter notebook in, all out"
 
   ingress {
@@ -48,7 +48,7 @@ resource "aws_security_group" "allow_ssh_jn" {
   }
 
   tags {
-    Name = "allow_ssh_jn"
+    Name = "allow_ssh_jupyter"
   }
 }
 
@@ -77,7 +77,7 @@ resource "aws_instance" "web" {
     volume_size = 18
   }
 
-  security_groups = ["${aws_security_group.allow_ssh_jn.name}"]
+  security_groups = ["${aws_security_group.allow_ssh_jupyter.name}"]
 
   key_name = "${var.key_name}"
 
