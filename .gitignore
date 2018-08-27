@@ -1,4 +1,6 @@
 .ipynb_checkpoints
 .terraform
+terraform.tfstate
+terraform.tfstate.backup
 work/data/*
 !work/data/zip_borough.csv
